@@ -20,19 +20,6 @@ GROUP BY students.name, course.name, grades.grade
 ORDER BY students.name, course.name, grades.grade;
 ```
 ### most popular course
-cte solution
-```sql
-WITH cte AS (
-	SELECT courses.name, COUNT(*) as count
-	FROM grades
-    	JOIN courses ON courses.id = grades.course_id
-	WHERE grades.grade >= 50
-	GROUP BY grades.course_id
-	ORDER BY count DESC
-)
-SELECT name FROM cte;
-```
-non cte solution
 ```sql
 SELECT courses.name
 FROM grades
